@@ -22,11 +22,18 @@
             var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]\:;?><,./-=";
             let password = ""
 
-            for (let i = 0;i  {
+            for (let i = 0; i < 8; i++) {
+                const randomNumber = Math.floor(Math.random() * chars.length)
+                password += chars.substring(randomNumber, randomNumber + 1)
             }
+
+            const inputE1 = document.querySelector("#password")
+            inputE1.value = password
+
+            console.log(password)
         }
 
-
+        generatePassword()
     </script>
 </body>
 
