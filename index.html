@@ -15,9 +15,11 @@
 
     <input type="range" name="password-length" id="password-length" value="16" max="64" />
 
-    <button>Copiar senha</button>
+    <button id="copy">Copiar senha</button>
 
     <script>
+        const inputEl = document.querySelector("#password");
+
         let passwordLenght = 16
 
         function generatePassword() {
@@ -29,19 +31,23 @@
                 password += chars.substring(randomNumber, randomNumber + 1);
             }
 
-            const inputE1 = document.querySelector("#password");
-            inputE1.value = password;
-
-            console.log(password);
+            inputEl.value = password;
         }
 
-        const passwordLenghtE1 = document.querySelector("#password-length"); 
+        function copy() {
+            mavigator.clipboard.writeText(inputEl.value);
+        }
+
+        const passwordLenghtE1 = document.querySelector("#password-length");
         passwordLenghtE1.addEventListener("input", function () {
             passwordLenght = passwordLenghtE1.value;
             console.log(passwordLenght);
             generatePassword();
         })
- 
+
+        const copyButtonEl = document.querySelector("#copy");
+        copyButtonEl.addEventListener("click", copy);
+
         generatePassword();
     </script>
 </body>
